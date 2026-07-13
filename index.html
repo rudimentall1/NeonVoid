@@ -4,6 +4,8 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover, user-scalable=no">
 <title>Neon Void: Quantum Breaker</title>
+  <!-- ===== TELEGRAM MINI APP SDK ===== -->
+<script src="https://telegram.org/js/telegram-web-app.js"></script>
 
 <!-- ===== GAMEMONETIZE SDK ===== -->
 <script type="text/javascript">
@@ -1230,11 +1232,28 @@ html, body {
         const x = Math.random() * VW, y = Math.random() * VH, c = Math.random() < 0.5 ? '#00f0ff' : '#ff2d95';
         particles.push(new Particle(x, y, (Math.random()-0.5)*0.5, -Math.random()*1.5, c, 80, 1.5));
       }
-      for (const p of particles) p.update(1); particles = particles.filter(p => p.alive);
-      for (const s of shockwaves) s.update(); shockwaves = shockwaves.filter(s => s.alive);
+      for (const p of particles) p.update(1); 
+      particles = particles.filter(p => p.alive);
+
+      for (const s of shockwaves) s.update(); 
+      shockwaves = shockwaves.filter(s => s.alive);
     }
   }, 50);
+
+
+  // ===== TELEGRAM MINI APP =====
+  if (window.Telegram && Telegram.WebApp) {
+
+      Telegram.WebApp.ready();
+
+      Telegram.WebApp.expand();
+
+      console.log("NeonVoid Telegram Mini App initialized");
+
+  }
+
 })();
 </script>
+
 </body>
 </html>
